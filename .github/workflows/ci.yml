@@ -21,4 +21,5 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd ${{ secrets.DEPLOY_PATH }}
+          git config --global --add safe.directory ${{ secrets.DEPLOY_PATH }}
           git pull origin main
