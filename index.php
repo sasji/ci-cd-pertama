@@ -1,2 +1,2 @@
 <?php
-echo "CI/CD pertama saya berhasil!";
+echo "AUTO DEPLOY BERHASIL";
