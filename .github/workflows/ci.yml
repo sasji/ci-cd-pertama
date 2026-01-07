@@ -20,6 +20,16 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
+          echo "🔹 Masuk ke folder deploy"
           cd ${{ secrets.DEPLOY_PATH }}
+
+          echo "🔹 Menandai folder safe untuk Git"
           git config --global --add safe.directory ${{ secrets.DEPLOY_PATH }}
+
+          echo "🔹 Menarik update dari main branch"
           git pull origin main
+
+          echo "🔹 Restart service web (Apache)"
+          sudo systemctl restart apache2 || echo "⚠️ Apache restart gagal"
+
+          echo "✅ Deploy selesai"
